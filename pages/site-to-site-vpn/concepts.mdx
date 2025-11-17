@@ -1,0 +1,37 @@
+---
+title: Site-to-Site VPN - Concepts
+description: This page explains all the concepts related to Scaleway Site-to-Site VPN
+tags: site-to-site-vpn
+dates:
+  validation: 2025-11-17
+---
+//This file has been created from editing a copy of the Elastic Metal Concept page.
+
+import image1 from './assets/scaleway-s2svpn-conceptual.webp'
+
+//From https://scaleway.com/cdn-cgi/image/width=828/https://www.scaleway.com/en/docs/_next/static/media/scaleway-s2svpn-conceptual.214c2d1b.webp
+<Lightbox image={image1} alt="A diagram shows a connection between a VPC and a Customer remote infrastructure via VPN and Customer gateways" />
+
+//These concepts are taken and edited from the following pages: https://www.scaleway.com/en/developers/api/site-to-site-vpn/ , https://www.scaleway.com/en/docs/public-gateways/concepts/#private-network, https://www.scaleway.com/en/docs/interlink/concepts/#routing-policy
+
+## Connection
+
+A connection represents the bridge between your VPN gateway and your customer gateway. One connection can support up to two IPsec tunnels: one over IPv4 and one over IPv6. This allows for a highly available tunnel configuration, provided that both the VPN gateway and the customer gateway have configured public IP addresses through Scaleway resources, using the correct IP version on both ends.
+
+## Customer Gateway
+
+A customer gateway is a logical resource that represents your on-premises network device. It acts as the endpoint of the IPsec tunnel established with the Scaleway VPN gateway. Each customer gateway can be configured with one public IPv4 address, one public IPv6 address, and the ASN of the BGP router used to establish the BGP session over the IPsec tunnel.
+
+This resource is required to define the remote side of the VPN tunnel. Its information will be used during the setup of the connection.
+
+## Private Networks
+
+See [the VPC documentation](/vpc/concepts/#private-networks).
+
+## Routing Policy
+
+A routing policy contains the rules filtering the IP prefixes allowed to use the VPN tunnel.  Attaching a routing policy allows you to define the ranges of routes that should be whitelisted. When creating a routing policy, you specify one or many IP ranges representing the outgoing routes to announce from the Scaleway VPC, and one or many IP ranges representing the incoming route announcements to accept from the external infrastructure.
+
+## VPN Gateway
+
+A VPN gateway is a managed resource that serves IPsec tunnels between your external infrastructure and your Scaleway VPC. Each connection within the gateway represents an IPsec tunnel established over the public internet. A single VPN gateway can host multiple connections.
