@@ -1,0 +1,58 @@
+---
+title: Site-to-Site VPN FAQ
+description: Discover Scaleway Site-to-Site VPN.
+dates:
+  validation: 2025-11-18
+productIcon: S2SVPNProductIcon
+---
+
+## Overview
+
+### What is Site-to-Site VPN?
+
+Site-to-Site VPN lets you securely connect your Scaleway VPC to your remote infrastructure, enabling encrypted data exchange over a private VPN tunnel. Integrated with VPC routing, traffic destined for your remote infrastructure can reach it from your VPC via the secure VPN tunnel, and vice versa. Site-to-Site VPN connections are secured with Internet Protocol security ([IPsec](https://en.wikipedia.org/wiki/IPsec)).
+
+## Offering and availability
+
+### Which regions are available for Site-to-Site VPN?
+
+Site-to-Site VPN is available in the following regions and Availability Zones:
+
+* Amsterdam, The Netherlands (`AMS`)
+* Paris, France (`PAR`)
+* Warsaw, Poland (`WAW`)
+
+## Specifications
+
+### What protocols and encryption methods does Site-to-Site VPN use?
+
+Site-to-Site VPN is based on IPsec with the IKEv2 protocol for negotiation and tunnel establishment. A pre-shared key (PSK) is used for authentication.
+
+You can define supported encryption and hashing algorithms (IKE and ESP ciphers) in your Connection settings. See our [API Documentation](https://www.scaleway.com/en/developers/api/site-to-site-vpn/) for more details.
+
+## Compatibility and integration
+
+### Can I use a custom PSK?
+
+This is not currently possible. The PSK is generated automatically when creating the connection object and cannot be modified.
+
+### Can I use Site-to-Site VPN to connect two Scaleway VPCs?
+
+No. VPC peering connection using Site-to-Site VPN to create a tunnel between two Scaleway VPCs is not possible at the moment. Scaleway is planning to release an official VPC peering solution in the future.
+
+### Does Site-to-Site VPN support IPv6?
+
+Yes. When creating the VPN gateway, it will get both an IPv4 and IPv6 address on the Private Network.
+
+### Can I use both IPv4 and IPv6 for my VPN tunnels?
+
+Yes. A VPN Connection can include one or two IPsec tunnels:
+- one using IPv4 addresses,
+- one using IPv6 addresses.
+Customer gateways with both types of IP will be able to support two connections to a single VPN gateway, providing increased redundancy.
+
+## Support and troubleshooting
+
+### Where can I find the PSK?
+
+The PSK is securely stored in [Scaleway Secret Manager](/secret-manager/), and can be retrieved for the purposes of configuring your customer gateway device.
