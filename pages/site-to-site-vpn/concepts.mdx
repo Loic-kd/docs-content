@@ -7,16 +7,16 @@ dates:
 ---
 //This file has been created from editing a copy of the Elastic Metal Concept page.
 
-import image1 from './assets/scaleway-s2svpn-conceptual.webp'
+import image1 from './reference-content/assets/scaleway-s2svpn-conceptual.webp'
 
-//From https://scaleway.com/cdn-cgi/image/width=828/https://www.scaleway.com/en/docs/_next/static/media/scaleway-s2svpn-conceptual.214c2d1b.webp
-<Lightbox image={image1} alt="A diagram shows a connection between a VPC and a Customer remote infrastructure via VPN and Customer gateways" />
-
-//These concepts are taken and edited from the following pages: https://www.scaleway.com/en/developers/api/site-to-site-vpn/ , https://www.scaleway.com/en/docs/public-gateways/concepts/#private-network, https://www.scaleway.com/en/docs/interlink/concepts/#routing-policy
+//These concepts are taken and edited from the following pages: https://www.scaleway.com/en/developers/api/site-to-site-vpn/ , https://www.scaleway.com/en/docs/public-gateways/concepts/#private-network, https://www.scaleway.com/en/docs/interlink/concepts/#routing-policy, https://www.scaleway.com/en/docs/vpc/concepts/#vpc
 
 ## Connection
 
 A connection represents the bridge between your VPN gateway and your customer gateway. One connection can support up to two IPsec tunnels: one over IPv4 and one over IPv6. This allows for a highly available tunnel configuration, provided that both the VPN gateway and the customer gateway have configured public IP addresses through Scaleway resources, using the correct IP version on both ends.
+
+//From https://www.scaleway.com/en/docs/site-to-site-vpn/reference-content/understanding-s2svpn/
+<Lightbox image={image1} alt="A diagram shows a connection between a VPC and a Customer remote infrastructure via VPN and Customer gateways" />
 
 ## Customer Gateway
 
@@ -31,6 +31,12 @@ See [the VPC documentation](/vpc/concepts/#private-networks).
 ## Routing Policy
 
 A routing policy contains the rules filtering the IP prefixes allowed to use the VPN tunnel.  Attaching a routing policy allows you to define the ranges of routes that should be whitelisted. When creating a routing policy, you specify one or many IP ranges representing the outgoing routes to announce from the Scaleway VPC, and one or many IP ranges representing the incoming route announcements to accept from the external infrastructure.
+
+## VPC
+
+VPC allows you to build your own **V**irtual **P**rivate **C**loud on top of Scaleway's shared public cloud. Within each VPC, you can create **Private Networks** and attach Scaleway resources to them, as long as the resources are in an AZ within the network's region.
+
+See [the VPC documentation](/vpc/concepts).
 
 ## VPN Gateway
 
